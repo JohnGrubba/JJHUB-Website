@@ -3,18 +3,54 @@
     <head>
         <title>JJHUB Online</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="background.css">
+
     </head>
     <body>
-        <h1>JJHUB</h1>
+        <div class="background-container">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
+        <div class="clouds"></div>
+        <div class="main">
+            <h1 style="color: white;">JJHUB</h1>
 
-        <table class="center">
-            <li>Software 1</li>
-            <ul>Download 1</ul>
-        </table>
-        
-        <table class="center">
-            <li>Software 2</li>
-            <ul>Download 2</ul>
-        </table>
+            <softwares id="softwares">
+            </softwares>
+        </div>
+
     </body>
+
+    <script>
+        var out = ""
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                js = JSON.parse(xmlhttp.responseText)
+                for(var i = 0; i < js.length; i++) {
+                    out += '<table class="center"><tr><th><a onclick="getDownloadLink(\''+js[i].download_link+'\')">'+js[i].name+'</a></th></tr></table>'
+                }
+                document.getElementById("softwares").innerHTML = out;
+            }
+        }
+        xmlhttp.open("GET", "https://jjtv-projects.jjtv.repl.co/listapps", true);
+		xmlhttp.send();
+
+        function getDownloadLink(link) {
+            var xmlhttp1 = new XMLHttpRequest();
+            xmlhttp1.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Done")
+                    if(xmlhttp1.responseText.includes("Problems")) {
+                        alert("There was a problem downloading the app. Please try again later.")
+                        return
+                    }
+                    window.location.href = xmlhttp1.responseText
+                }
+            }
+            xmlhttp1.open("GET", "https://jjtv-projects.jjtv.repl.co/directlink/?link="+link, true);
+		    xmlhttp1.send();
+        }
+    </script>
+
 </html>
