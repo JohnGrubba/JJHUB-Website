@@ -32,10 +32,10 @@
                 document.getElementById("softwares").innerHTML = out;
             }
         }
-        xmlhttp.open("GET", "https://jjtv-projects.jjtv.repl.co/listapps", true);
+        xmlhttp.open("GET", "https://JJTV-Projects.jjtv.repl.co/listapps", true);
 		xmlhttp.send();
 
-        function getDownloadLink(link) {
+        async function getDownloadLink(link) {
             var xmlhttp1 = new XMLHttpRequest();
             xmlhttp1.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -51,7 +51,7 @@
                     window.location.href = xmlhttp1.responseText
                 }
             }
-            xmlhttp1.open("GET", "https://jjtv-projects.jjtv.repl.co/directlink/?link="+link, true);
+            xmlhttp1.open("GET", "https://JJTV-Projects.jjtv.repl.co/linkme?link="+link, true);
 		    xmlhttp1.send();
         }
     </script>
