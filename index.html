@@ -44,6 +44,10 @@
                         alert("There was a problem downloading the app. Please try again later.")
                         return
                     }
+                    if(xmlhttp1.responseText.includes("Cloudflare block!")){
+                        alert("You are blocked by Cloudflare. Please try again later.")
+                        return
+                    }
                     window.location.href = xmlhttp1.responseText
                 }
             }
