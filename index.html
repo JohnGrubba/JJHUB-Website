@@ -29,7 +29,7 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onerror = function() {
             alert("JJTV Servers are currently offline. Please try again later")
-            document.location.reload()
+            //document.location.reload()
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -40,7 +40,8 @@
                 document.getElementById("softwares").innerHTML = out;
             }
         }
-        xmlhttp.open("GET", "https://JJTV-Projects.jjtv.repl.co/listapps", true);
+        stamp = new Date().getTime()
+        xmlhttp.open("GET", "https://JJTV-Projects.jjtv.repl.co/listapps?stamp="+stamp, true);
         xmlhttp.send();
 
         function DownloadJJHUB(){
