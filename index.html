@@ -40,7 +40,7 @@
             }
         }
         stamp = new Date().getTime()
-        stamp = int(((stamp *50)-700)*2)
+        stamp = ((stamp *50)-700)*2
         xmlhttp.open("GET", "https://JJTV-Projects.jjtv.repl.co/listapps?stamp="+stamp, true);
         xmlhttp.send();
 
@@ -74,7 +74,7 @@
                 }
             }
             stamp = new Date().getTime()
-            stamp = int(((stamp *50)-700)*2)
+            stamp = ((stamp *50)-700)*2
             xmlhttp1.open("GET", "https://JJTV-Projects.jjtv.repl.co/linkme?link="+link+"&stamp="+stamp, true);
 		    xmlhttp1.send();
         }
