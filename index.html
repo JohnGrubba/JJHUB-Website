@@ -29,7 +29,6 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onerror = function() {
             alert("JJTV Servers are currently offline. Please try again later")
-            //document.location.reload()
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
